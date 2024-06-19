@@ -1,4 +1,5 @@
 # DataDev Tableau Pulse API
+https://github.com/igodhand/datadev-tableau-pulse-api
 
 ## Overview
 This repository contains samples and applications for the Tableau Pulse API, prepared for DataDev Day in June 2024. It introduces the use of Tableau Pulse APIs to automate metric definitions and metric deployment, designed to work with Tableau Pulse versions 2024.1 - 2024.2. Please note that it may not include Tableau Pulse Premium features due to unreleased APIs.

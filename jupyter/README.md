@@ -1,3 +1,7 @@
+## Setup
+
+You can use my sample SuperStoreDataDev.tdsx to publish to your Tableau Cloud site with TableauServerClient (TSC) and run the Jupyter Notebook in sequences.
+
 ## Step 0: Authenticate
 
 Sample code to authenticate with Tableau using a Personal Access Token, obtain a JSON response, and create
@@ -132,3 +136,16 @@ This code will list all definitions, metrics, and user_id which subscribe to cer
 ### Reference
 
 https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_pulse.htm#PulseSubscriptionService_ListSubscriptions
+
+## Step 9: Subscribe the user
+
+This code will assign a user to follow the metric (In the reference, you can use group also) 
+
+### Reference
+
+https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_pulse.htm#PulseSubscriptionService_CreateSubscription
+
+## Bonus Step - Reset Metric Definitions
+
+You can delete all the metric definitions which has the word "DataDev" to clean up your Tableau Cloud pulse metric definitions 
+

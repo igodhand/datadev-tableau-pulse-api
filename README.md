@@ -4,6 +4,10 @@ https://github.com/igodhand/datadev-tableau-pulse-api
 ## Overview
 This repository contains samples and applications for the Tableau Pulse API, prepared for DataDev Day in June 2024. It introduces the use of Tableau Pulse APIs to automate metric definitions and metric deployment, designed to work with Tableau Pulse versions 2024.1 - 2024.2. Please note that it may not include Tableau Pulse Premium features due to unreleased APIs.
 
+I highly recommended to test the code with your Tableau Developer Cloud account before run on your production environment.
+
+Register Tableau Developer Program and get Tableau Cloud Developer site [here](https://www.tableau.com/community/datadev) 
+
 ## Prerequisites
 It is assumed that you have the following knowledge:
 * How to authenticate Tableau Cloud using a Personal Access Token with the REST API.
@@ -19,6 +23,14 @@ You need to set up the Tableau Cloud Personal Access Token and your Tableau Clou
     * `token_secret`: `os.environ.get('PAT_TOKEN_SECRET')`
     * `content_url`: `os.environ.get('PAT_CONTENT_URL')`
 
+
+* You need to have TableauServerClient (TSC) for publish datasource
+  * `pip install tableauserverclient`
+
+
+* You need to have pandas to translate JSON structure as dataframe
+  * `pip install pandas`
+
 ## Helper Class
 In general, we also need a helper class for authentication, querying frequently used endpoints, and utility functions to translate JSON responses into structured data.
 
@@ -29,6 +41,7 @@ In general, we also need a helper class for authentication, querying frequently 
 ## References
 
 ### Tableau REST API
+
 * **Authentication**
     * [Tableau REST API Authentication](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_auth.htm)
 * **Datasource**
@@ -37,7 +50,7 @@ In general, we also need a helper class for authentication, querying frequently 
     * [Tableau Pulse API Reference](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_pulse.htm)
 * **Tableau Pulse API Detailed Reference (Very Useful for getting expected results)**
     * [Tableau Pulse API Detailed Reference](https://help.tableau.com/current/api/rest_api/en-us/REST/TAG/index.html#tag/Pulse-Methods)
-* **Salesforce Developer Postman Collection (Very Useful for Payload POSTing)**
+* **Salesforce Developer Postman Collection (Very Useful for exact Payload POSTing)**
     * [Salesforce Developer Postman Collection](https://www.postman.com/salesforce-developers/workspace/salesforce-developers/folder/12721794-d04fce0e-38f8-4bf0-8bca-978f0364c919)
 
 I highly recommend watching Timothy Vermeiren's session about Hacking Tableau 101 to learn more about Tableau HTTP requests.

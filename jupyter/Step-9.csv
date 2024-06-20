@@ -1,0 +1,10 @@
+definition_name,granularity,range,user
+DataDev Demo 01,YEAR,LAST,vorapol@bac.co.th
+DataDev Demo 01,MONTH,CURRENT,vorapol@bac.co.th
+DataDev Demo 02,WEEK,CURRENT,vorapol@bac.co.th
+DataDev Demo 02,WEEK,LAST,vorapol@bac.co.th
+DataDev Demo 02,MONTH,CURRENT,vorapol@bac.co.th
+DataDev Demo 02,QUARTER,CURRENT,vorapol@bac.co.th
+DataDev Demo 02,DAY,CURRENT,vorapol@bac.co.th
+DataDev Demo 02,YEAR,CURRENT,vorapol@bac.co.th
+DataDev Demo 02,DAY,LAST,vorapol@bac.co.th

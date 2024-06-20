@@ -117,7 +117,7 @@ class APIHelper:
             user_dict[item[1]] = item[0]
         return user_dict
 
-    def get_pulse_metric_definitions(self):
+    def get_pulse_metric_definitions_dict(self):
 
         api_url = f'{self.base_api_url}/pulse/definitions'
 
@@ -263,7 +263,8 @@ class APIHelper:
 
 if __name__ == '__main__':
 
-    ## Testing Code
+    # Code Testing
+
     import config as config
 
     config_dict = config.config_dict
@@ -279,7 +280,7 @@ if __name__ == '__main__':
     user_dict = helper.get_user_dict()
     print(user_dict)
 
-    definition_dict = helper.get_pulse_metric_definitions()
+    definition_dict = helper.get_pulse_metric_definitions_dict()
     print(definition_dict)
 
     subscription_df = helper.get_pulse_subscription_df()

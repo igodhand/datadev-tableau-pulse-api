@@ -102,6 +102,21 @@ class APIHelper:
             datasource_dict_tuple[(item[3], item[1])] = item[0]
         return datasource_dict_tuple
 
+    def get_user_dict(self):
+        api_url = f'{self.base_site_url}/users'
+        response = requests.get(api_url, headers=self.headers)
+        items = response.json()['users']['user']
+
+        extracted_data = [
+            (item.get('id'), item.get('name'), item.get('siteRole'), item.get('email'))
+            for item in items
+        ]
+        sorted_data = sorted(extracted_data, key=lambda x: x[1])
+        user_dict = {}
+        for item in sorted_data:
+            user_dict[item[1]] = item[0]
+        return user_dict
+
     def get_pulse_metric_definitions(self):
 
         api_url = f'{self.base_api_url}/pulse/definitions'
@@ -152,6 +167,24 @@ class APIHelper:
 
         return metric_data_list
 
+    def get_user_df(self):
+        api_url = f'{self.base_site_url}/users'
+        response = requests.get(api_url, headers=self.headers)
+        items = response.json()['users']['user']
+
+        extracted_data = [
+            (item.get('id'), item.get('name'))
+            for item in items
+        ]
+        sorted_data = sorted(extracted_data, key=lambda x: x[1])
+
+        user_df = pd.DataFrame(sorted_data, columns=['user_id', 'user_name'])
+        user_df['user_name'] = user_df['user_name'].apply(
+            lambda email: email[:2] + '*****@' + 'domain.com'
+        )
+        return user_df
+
+
     def get_pulse_metric_definitions_and_metrics_df(self, filter=None):
 
         api_url = f'{self.base_api_url}/pulse/definitions'
@@ -198,6 +231,35 @@ class APIHelper:
 
         return df
 
+    def get_pulse_subscription_df(self):
+        api_url = f'{self.base_api_url}/pulse/subscriptions'
+
+        subscription_list = []
+        api_response = requests.get(api_url, headers=self.headers)
+        api_response_json = api_response.json()
+        subscription_list.extend(api_response_json['subscriptions'])
+
+        while 'next_page_token' in api_response_json and api_response_json['next_page_token'] != '':
+            next_page_token = api_response_json['next_page_token']
+            api_response = requests.get(f'{api_url}?pageToken={next_page_token}', headers=self.headers)
+            api_response_json = api_response.json()
+            subscription_list.extend(api_response_json['subscriptions'])
+
+        subscription_detail_list = []
+
+        for item in subscription_list:
+            subscription_id = item.get('id', '')
+            metric_id = item.get('metric_id', '')
+            user_id = item.get('follower', {}).get('user_id', '')
+
+            subscription_detail_list.append({
+                'subscription_id': subscription_id,
+                'metric_id': metric_id,
+                'user_id': user_id
+            })
+
+        df = pd.DataFrame(subscription_detail_list, columns=['subscription_id', 'metric_id', 'user_id'])
+        return df
 
 if __name__ == '__main__':
 
@@ -214,8 +276,14 @@ if __name__ == '__main__':
     datasource_dict_tuple = helper.get_datasource_dict_tuple()
     print(datasource_dict_tuple)
 
+    user_dict = helper.get_user_dict()
+    print(user_dict)
+
     definition_dict = helper.get_pulse_metric_definitions()
     print(definition_dict)
 
-    metric_df = helper.get_pulse_metric_definitions_and_metrics_df(filter='Number')
+    subscription_df = helper.get_pulse_subscription_df()
+    print(subscription_df)
+
+    metric_df = helper.get_pulse_metric_definitions_and_metrics_df(filter='DataDev')
     print(metric_df)

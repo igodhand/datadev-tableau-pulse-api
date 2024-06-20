@@ -116,3 +116,19 @@ You can reuse the code from Step 6.1 and make a for loop !
 
 ### Reference
 * https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_pulse.htm#MetricQueryService_CreateMetric
+
+## Step 7: The Subscription
+
+This code will list all definitions, metrics, and user_id which subscribe to certain metrics.
+
+### Reference
+
+https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_pulse.htm#PulseSubscriptionService_ListSubscriptions
+
+## Step 8: The Subscription (Full Version)
+
+This code will list all definitions, metrics, and user_id which subscribe to certain metrics, then look up the definition and metrics combination along with user account.
+
+### Reference
+
+https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_pulse.htm#PulseSubscriptionService_ListSubscriptions

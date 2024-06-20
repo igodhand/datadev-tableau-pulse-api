@@ -41,9 +41,3 @@ In general, we also need a helper class for authentication, querying frequently 
     * [Salesforce Developer Postman Collection](https://www.postman.com/salesforce-developers/workspace/salesforce-developers/folder/12721794-d04fce0e-38f8-4bf0-8bca-978f0364c919)
 
 I highly recommend watching Timothy Vermeiren's session about Hacking Tableau 101 to learn more about Tableau HTTP requests.
-
-## Special Thanks
-
-* Will Ayd's pantab library
-    * Install pantab with: `pip install pantab`
-    * [Pantab Documentation](https://pantab.readthedocs.io/en/latest/)
